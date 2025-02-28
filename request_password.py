@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from utils import icon_path
+import os
 
 def request_password(window, show_main_menu):
     # Hide the main window
@@ -28,7 +29,9 @@ def request_password(window, show_main_menu):
     entry.pack(pady=5)
 
     def check_password(event=None): # Event=None to call ENTER key
-        if entry.get() == "0000": # Password
+        correct_password = os.getenv("PASSWORD_KEEPER_PASSWORD")
+        print(f"DEBUG: Correct password from env: {correct_password}")  # Linha de depuração
+        if entry.get() == correct_password:
             password_window.destroy()
             window.deiconify()
             show_main_menu()
