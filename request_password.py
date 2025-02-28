@@ -30,7 +30,6 @@ def request_password(window, show_main_menu):
 
     def check_password(event=None): # Event=None to call ENTER key
         correct_password = os.getenv("PASSWORD_KEEPER_PASSWORD")
-        print(f"DEBUG: Correct password from env: {correct_password}")  # Linha de depuração
         if entry.get() == correct_password:
             password_window.destroy()
             window.deiconify()
